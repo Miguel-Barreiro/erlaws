@@ -17,7 +17,7 @@
 -include_lib("xmerl/include/xmerl.hrl").
 -include("../include/erlaws.hrl").
 
--define(AWS_SQS_VERSION, "2012-11-05").
+-define(AWS_SQS_VERSION, "2008-01-01").
 
 %% queues
 
