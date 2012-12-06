@@ -17,7 +17,7 @@
 -include_lib("xmerl/include/xmerl.hrl").
 -include("../include/erlaws.hrl").
 
--define(AWS_SQS_VERSION, "2008-01-01").
+-define(AWS_SQS_VERSION, "2012-11-05").
 
 %% queues
 
@@ -139,8 +139,7 @@ get_queue_url(QueueName) ->
 %% Returns the attributes for the given QueueUrl
 %%
 %% Spec: get_queue_attr(QueueUrl::string()) ->
-%%       {ok, [{"VisibilityTimeout", Timeout::integer()},
-%%             {"ApproximateNumberOfMessages", Number::integer()}], {requestId, ReqId::string()}} |
+%%       {ok, attribute_list:list , {requestId, ReqId::string()}} |
 %%       {error, {HTTPStatus::string, HTTPReason::string()}, {Code::string(), Message::string(), {requestId, ReqId::string()}}}
 %%
 get_queue_attr(QueueUrl) ->
@@ -149,13 +148,10 @@ get_queue_attr(QueueUrl) ->
 	{ok, Body} -> 
 	    {XmlDoc, _Rest} = xmerl_scan:string(Body),
 	    AttributeNodes = xmerl_xpath:string("//Attribute", XmlDoc),
-	    AttrList = [{Key, 
-			 list_to_integer(Value)} || Node <- AttributeNodes,  
+	    AttrList = [{Key, Value} || Node <- AttributeNodes,  
 			begin
-			    [#xmlText{value=Key}|_] = 
-				xmerl_xpath:string("./Name/text()", Node),
-			    [#xmlText{value=Value}|_] =
-				xmerl_xpath:string("./Value/text()", Node),
+			    [#xmlText{value=Key}|_] = xmerl_xpath:string("./Name/text()", Node),
+			    [#xmlText{value=Value}|_] = xmerl_xpath:string("./Value/text()", Node),
 			    true
 			end],
 		[#xmlText{value=RequestId}|_] =
