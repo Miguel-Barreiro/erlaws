@@ -1,3 +1,5 @@
+-include_lib("../submodules/pmod_transform/include/pmod.hrl").
+
 -module(erlaws_ec2, [AWS_KEY, AWS_SEC_KEY, SECURE]).
 -author	(dieu).
 
