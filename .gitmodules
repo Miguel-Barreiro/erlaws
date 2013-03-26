@@ -1,3 +1,0 @@
-[submodule "submodules/pmod_transform"]
-	path = submodules/pmod_transform
-	url = git://github.com/Miguel-Barreiro/pmod_transform.git
