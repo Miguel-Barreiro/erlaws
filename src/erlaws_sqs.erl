@@ -4,6 +4,8 @@
 %% @end
 %%%-------------------------------------------------------------------
 
+-include_lib("../submodules/pmod_transform/include/pmod.hrl").
+
 -module(erlaws_sqs,[AWS_KEY, AWS_SEC_KEY, SECURE, AWS_SQS_HOST]).
 
 %% exports
