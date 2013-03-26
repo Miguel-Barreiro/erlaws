@@ -6,7 +6,7 @@
 %%% Created : 25 Dec 2007 by Sascha Matzke <sascha.matzke@didolo.org>
 %%%-------------------------------------------------------------------
 
--include_lib("../submodules/pmod_transform/include/pmod.hrl").
+-include_lib("../deps/pmod_transform/include/pmod.hrl").
 
 -module(erlaws_s3, [AWS_KEY, AWS_SEC_KEY, SECURE]).
 

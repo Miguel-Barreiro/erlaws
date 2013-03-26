@@ -5,7 +5,7 @@
 %% @end
 %%%-------------------------------------------------------------------
 
--include_lib("../submodules/pmod_transform/include/pmod.hrl").
+-include_lib("../deps/pmod_transform/include/pmod.hrl").
 
 -module(erlaws_sdb, [AWS_KEY, AWS_SEC_KEY, SECURE]).
 
